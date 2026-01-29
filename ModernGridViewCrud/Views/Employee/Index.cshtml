@@ -1,0 +1,42 @@
+@model IEnumerable<BLL.Employee>
+
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<h1>Employee List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.Designation)</th>
+            <th>@Html.DisplayNameFor(model => model.DateOfJoining)</th>
+            <th>@Html.DisplayNameFor(model => model.Gender)</th>
+            <th>@Html.DisplayNameFor(model => model.Qualification)</th>
+            <th>@Html.DisplayNameFor(model => model.State)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Designation)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateOfJoining)</td>
+            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+            <td>@Html.DisplayFor(modelItem => item.Qualification)</td>
+            <td>@Html.DisplayFor(modelItem => item.State)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EmployeeId" class="btn btn-warning btn-sm">Edit</a> 
+                <a asp-action="Delete" asp-route-id="@item.EmployeeId" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
